@@ -1,0 +1,342 @@
+:root {
+  --bg: #0d0d10;
+  --surface: #16161c;
+  --surface-2: #1d1d25;
+  --text: #f4f4f5;
+  --muted: #a8acb8;
+  --accent: #e63946;
+  --accent-2: #f77f00;
+  --border: #2e3140;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at top, #18181f 0%, var(--bg) 60%);
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 5vw;
+  backdrop-filter: blur(10px);
+  background: color-mix(in oklab, var(--bg) 75%, transparent);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-family: "Cinzel", serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  color: var(--text);
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 0.4rem;
+  padding: 0.35rem 0.5rem;
+}
+
+.hero {
+  position: relative;
+  min-height: 85vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 4rem 5vw;
+  background-image: url("https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?auto=format&fit=crop&w=1800&q=80");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero .overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35), rgba(13, 13, 16, 0.95));
+}
+
+.hero-content {
+  position: relative;
+  max-width: 760px;
+}
+
+.hero h1 {
+  font-family: "Cinzel", serif;
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent-2);
+  font-size: 0.75rem;
+  margin-bottom: 0.6rem;
+}
+
+.section {
+  padding: 4rem 5vw;
+}
+
+.section-heading h2 {
+  margin-top: 0;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: white;
+  padding: 0.72rem 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-small {
+  padding: 0.55rem 0.95rem;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--border);
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.filters {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.1rem;
+}
+
+.filter-btn {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--muted);
+  border-radius: 999px;
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  color: white;
+}
+
+.gallery-grid,
+.service-grid,
+.artist-grid,
+.value-grid,
+.contact-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.gallery-grid {
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+}
+
+.gallery-card {
+  margin: 0;
+  background: var(--surface);
+  border-radius: 0.8rem;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-card span {
+  display: block;
+  padding: 0.7rem;
+}
+
+.service-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.service-card,
+.artist-card,
+.value-grid article {
+  border: 1px solid var(--border);
+  border-radius: 0.8rem;
+  padding: 1rem;
+  background: linear-gradient(145deg, var(--surface), var(--surface-2));
+}
+
+.artist-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.artist-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.booking-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(200px, 1fr));
+  gap: 0.9rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.8rem;
+  padding: 1rem;
+}
+
+.booking-form label {
+  display: grid;
+  gap: 0.35rem;
+  font-weight: 500;
+}
+
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
+  border: 1px solid var(--border);
+  border-radius: 0.45rem;
+  background: #0f0f14;
+  color: var(--text);
+  padding: 0.65rem;
+  font: inherit;
+}
+
+.checkbox {
+  grid-auto-flow: column;
+  justify-content: start;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+#form-status {
+  margin: 0;
+  min-height: 1.2em;
+  color: var(--accent-2);
+}
+
+.value-grid {
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+}
+
+.contact-grid {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  align-items: stretch;
+}
+
+.contact-grid iframe {
+  width: 100%;
+  min-height: 260px;
+  border: 0;
+  border-radius: 0.8rem;
+}
+
+.site-footer {
+  padding: 1.5rem 5vw 2.2rem;
+  text-align: center;
+  color: var(--muted);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 860px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    right: 5vw;
+    top: 70px;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid var(--border);
+    border-radius: 0.7rem;
+    background: var(--surface);
+    width: min(260px, 90vw);
+    padding: 0.9rem;
+    display: none;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .booking-form {
+    grid-template-columns: 1fr;
+  }
+}

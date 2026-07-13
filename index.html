@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ink & Iron Tattoo Studio — custom tattoos, precision piercings, and elite aftercare in a sterile, creative environment.">
+  <title>Ink & Iron Tattoo Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="#home">Ink & Iron</a>
+    <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+    <nav class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#services">Services</a>
+      <a href="#artists">Artists</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-small" href="#booking">Book Now</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero reveal">
+      <div class="overlay"></div>
+      <div class="hero-content">
+        <p class="eyebrow">Professional Tattoo & Piercing Studio</p>
+        <h1>Bold Art. Precision Piercing. Impeccable Safety.</h1>
+        <p>
+          We create custom body art in a hygienic, welcoming space where creativity,
+          technique, and client care are equally non-negotiable.
+        </p>
+        <div class="hero-actions">
+          <a class="btn" href="#booking">Request Appointment</a>
+          <a class="btn btn-outline" href="#gallery">Explore Portfolio</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section reveal">
+      <div class="section-heading">
+        <p class="eyebrow">Portfolio</p>
+        <h2>Tattoos & Piercings Gallery</h2>
+      </div>
+      <div class="filters" role="group" aria-label="Gallery filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="blackwork">Blackwork</button>
+        <button class="filter-btn" data-filter="color">Color</button>
+        <button class="filter-btn" data-filter="fineline">Fine Line</button>
+        <button class="filter-btn" data-filter="piercing">Piercing</button>
+      </div>
+      <div class="gallery-grid">
+        <article class="gallery-card" data-category="blackwork">
+          <img src="https://images.unsplash.com/photo-1590246814883-57f00ab5a4f8?auto=format&fit=crop&w=900&q=80" alt="Blackwork sleeve tattoo">
+          <span>Blackwork</span>
+        </article>
+        <article class="gallery-card" data-category="color">
+          <img src="https://images.unsplash.com/photo-1562962230-16e4623d36e6?auto=format&fit=crop&w=900&q=80" alt="Color floral tattoo">
+          <span>Color</span>
+        </article>
+        <article class="gallery-card" data-category="fineline">
+          <img src="https://images.unsplash.com/photo-1542728928-1413d1894ed1?auto=format&fit=crop&w=900&q=80" alt="Fine line forearm tattoo">
+          <span>Fine Line</span>
+        </article>
+        <article class="gallery-card" data-category="piercing">
+          <img src="https://images.unsplash.com/photo-1610737241331-3e8f4f6f2b2a?auto=format&fit=crop&w=900&q=80" alt="Professional ear piercing setup">
+          <span>Piercing</span>
+        </article>
+        <article class="gallery-card" data-category="blackwork">
+          <img src="https://images.unsplash.com/photo-1519764622345-23439dd774f7?auto=format&fit=crop&w=900&q=80" alt="Geometric blackwork tattoo">
+          <span>Blackwork</span>
+        </article>
+        <article class="gallery-card" data-category="color">
+          <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80" alt="Color neo-traditional tattoo">
+          <span>Color</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="services" class="section reveal">
+      <div class="section-heading">
+        <p class="eyebrow">Services</p>
+        <h2>Craft, Care, and Transparent Pricing</h2>
+      </div>
+      <div class="service-grid">
+        <article class="service-card">
+          <h3>Custom Tattoos</h3>
+          <p>Original concepts, cover-ups, and collaborative design sessions with specialist artists.</p>
+          <p><strong>Starting at:</strong> $150 minimum / $180 hr</p>
+        </article>
+        <article class="service-card">
+          <h3>Professional Piercings</h3>
+          <p>Needle-only piercings with implant-grade jewelry and sterile single-use tools.</p>
+          <p><strong>Starting at:</strong> $60 including basic jewelry</p>
+        </article>
+        <article class="service-card">
+          <h3>Aftercare Support</h3>
+          <p>Detailed healing instructions, product guidance, and follow-up check-ins.</p>
+          <p><strong>Consult:</strong> Complimentary with every service</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="artists" class="section reveal">
+      <div class="section-heading">
+        <p class="eyebrow">Our Artists</p>
+        <h2>Meet the Team</h2>
+      </div>
+      <div class="artist-grid">
+        <article class="artist-card">
+          <img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=700&q=80" alt="Portrait of artist Lena">
+          <h3>Lena Cruz</h3>
+          <p>Specialties: Fine line, botanical realism, script work.</p>
+          <p class="muted">Known for delicate details and balanced compositions.</p>
+        </article>
+        <article class="artist-card">
+          <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=700&q=80" alt="Portrait of artist Malik">
+          <h3>Malik Stone</h3>
+          <p>Specialties: Blackwork, geometric, large-scale sleeves.</p>
+          <p class="muted">Transforms bold concepts into clean, durable artwork.</p>
+        </article>
+        <article class="artist-card">
+          <img src="https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?auto=format&fit=crop&w=700&q=80" alt="Portrait of piercer Ari">
+          <h3>Ari Vale</h3>
+          <p>Specialties: Ear curation, facial piercings, advanced placements.</p>
+          <p class="muted">Precision-focused with deep expertise in healing and jewelry fit.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="booking" class="section reveal">
+      <div class="section-heading">
+        <p class="eyebrow">Booking</p>
+        <h2>Appointment Request Form</h2>
+      </div>
+      <form class="booking-form" id="booking-form" novalidate>
+        <label>
+          Full Name
+          <input type="text" name="name" required>
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" required>
+        </label>
+        <label>
+          Phone
+          <input type="tel" name="phone" required>
+        </label>
+        <label>
+          Service
+          <select name="service" required>
+            <option value="">Select one</option>
+            <option value="tattoo">Tattoo</option>
+            <option value="piercing">Piercing</option>
+            <option value="consultation">Consultation</option>
+          </select>
+        </label>
+        <label>
+          Preferred Artist
+          <select name="artist">
+            <option value="">No preference</option>
+            <option value="lena">Lena Cruz</option>
+            <option value="malik">Malik Stone</option>
+            <option value="ari">Ari Vale</option>
+          </select>
+        </label>
+        <label>
+          Preferred Date
+          <input type="date" name="date" required>
+        </label>
+        <label class="full-width">
+          Project Details
+          <textarea name="details" rows="4" placeholder="Describe style, size, placement, and references."></textarea>
+        </label>
+        <label class="checkbox full-width">
+          <input type="checkbox" name="consent" required>
+          I confirm I am 18+ and have read hygiene and safety policies.
+        </label>
+        <button class="btn full-width" type="submit">Submit Request</button>
+        <p id="form-status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section id="about" class="section reveal">
+      <div class="section-heading">
+        <p class="eyebrow">About Us</p>
+        <h2>Studio Values</h2>
+      </div>
+      <div class="value-grid">
+        <article>
+          <h3>Hygiene First</h3>
+          <p>Hospital-grade sterilization, sealed single-use consumables, and strict protocol on every station.</p>
+        </article>
+        <article>
+          <h3>Safety Always</h3>
+          <p>Certified professionals, premium materials, and clear consent and aftercare procedures.</p>
+        </article>
+        <article>
+          <h3>Custom Work</h3>
+          <p>Every piece is tailored to the client — no shortcuts, no copy-paste art.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="section reveal">
+      <div class="section-heading">
+        <p class="eyebrow">Contact</p>
+        <h2>Visit Ink & Iron</h2>
+      </div>
+      <div class="contact-grid">
+        <div>
+          <p><strong>Phone:</strong> <a href="tel:+15551234567">+1 (555) 123-4567</a></p>
+          <p><strong>Email:</strong> <a href="mailto:hello@inkandiron.studio">hello@inkandiron.studio</a></p>
+          <p><strong>Address:</strong> 118 Blackstone Ave, Suite B, Portland, OR</p>
+          <p><strong>Instagram:</strong> <a href="https://www.instagram.com" target="_blank" rel="noreferrer">@inkandironstudio</a></p>
+          <p><strong>TikTok:</strong> <a href="https://www.tiktok.com" target="_blank" rel="noreferrer">@inkandironstudio</a></p>
+        </div>
+        <iframe
+          title="Studio location map"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Portland%20Oregon&output=embed">
+        </iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Ink & Iron Tattoo Studio. Crafted with precision.</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
