@@ -1,0 +1,14 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Book an Appointment | Ink & Iron{% endblock %}
+
+{% block content %}
+<div class="ticket">
+    <h1>Request a Booking</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn-stamp">Submit Request</button>
+    </form>
+</div>
+{% endblock %}
