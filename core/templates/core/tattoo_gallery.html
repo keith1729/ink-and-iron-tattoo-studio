@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Tattoo Gallery | Ink & Iron{% endblock %}
+
+{% block content %}
+<section class="page-heading">
+    <h1>Tattoo Gallery</h1>
+    <p class="tagline">A look at recent work</p>
+</section>
+
+{% if images %}
+<div class="gallery-grid">
+    {% for photo in images %}
+    <div class="gallery-item">
+        <img src="{{ photo.image.url }}" alt="{{ photo.title }}">
+        <div class="gallery-caption">
+            <h3>{{ photo.title }}</h3>
+            {% if photo.description %}<p>{{ photo.description }}</p>{% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="gallery-empty">
+    <p>No photos uploaded yet, check back soon.</p>
+</div>
+{% endif %}
+{% endblock %}

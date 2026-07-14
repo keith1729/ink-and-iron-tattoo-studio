@@ -107,3 +107,6 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = f'Ink & Iron Studio <{EMAIL_HOST_USER}>'
 STUDIO_NOTIFICATION_EMAIL = os.environ.get('STUDIO_NOTIFICATION_EMAIL')
 # ==================== END EMAIL SETTINGS =====================
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'

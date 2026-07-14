@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.conf import settings
 from .forms import BookingRequestForm
+from .models import TattooImage
 
 def home(request):
     return render(request, 'core/home.html')
@@ -11,7 +12,6 @@ def booking_request(request):
         form = BookingRequestForm(request.POST)
         if form.is_valid():
             booking = form.save()
-
             # Studio Notification Email
             studio_message = (
                 f'New Booking Request from {booking.name}\n\n'
@@ -22,7 +22,6 @@ def booking_request(request):
                 f'Preferred date: {booking.preferred_date}\n'
                 f'Message: {booking.message}\n'
             )
-
             send_mail(
                 subject=f'New Booking Request from {booking.name}',
                 message=studio_message,
@@ -30,7 +29,6 @@ def booking_request(request):
                 recipient_list=[settings.STUDIO_NOTIFICATION_EMAIL],
                 fail_silently=False,
             )
-
             # Customer Confirmation Email
             customer_message = (
                 f"Hi {booking.name},\n\n"
@@ -43,7 +41,6 @@ def booking_request(request):
                 f"Best regards,\n"
                 f"Ink & Iron Tattoo & Piercing Studio\n"
             )
-
             send_mail(
                 subject="Thank you for your booking request - Ink & Iron Studio",
                 message=customer_message,
@@ -51,12 +48,14 @@ def booking_request(request):
                 recipient_list=[booking.email],
                 fail_silently=False,
             )
-
             return redirect('booking_success')
     else:
         form = BookingRequestForm()
-
     return render(request, 'core/booking_form.html', {'form': form})
 
 def booking_success(request):
     return render(request, 'core/booking_success.html')
+
+def tattoo_gallery(request):
+    images = TattooImage.objects.all()
+    return render(request, 'core/tattoo_gallery.html', {'images': images})
