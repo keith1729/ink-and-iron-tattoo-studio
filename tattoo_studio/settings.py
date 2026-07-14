@@ -2,7 +2,11 @@
 Django settings for tattoo_studio project.
 """
 
+import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -91,16 +95,15 @@ STATIC_URL = 'static/'
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# ==================== EMAIL SETTINGS ====================
+# ===================== EMAIL SETTINGS =====================
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
-EMAIL_HOST_USER = 'keithod1729@gmail.com'           # Your personal Gmail
-EMAIL_HOST_PASSWORD = 'wdxdhsfugqaebrtq'         # ← Remove spaces! Use the App Password you created earlier
-
-DEFAULT_FROM_EMAIL = 'Ink & Iron Studio <keithod1729@gmail.com>'
-STUDIO_NOTIFICATION_EMAIL = 'keithod1729@gmail.com'
-# =======================================================
+DEFAULT_FROM_EMAIL = f'Ink & Iron Studio <{EMAIL_HOST_USER}>'
+STUDIO_NOTIFICATION_EMAIL = os.environ.get('STUDIO_NOTIFICATION_EMAIL')
+# ==================== END EMAIL SETTINGS =====================
