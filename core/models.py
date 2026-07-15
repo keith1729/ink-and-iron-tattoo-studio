@@ -40,3 +40,19 @@ class TattooImage(models.Model):
 
     class Meta:
         ordering = ['-uploaded_at']
+
+
+class Artist(models.Model):
+    name = models.CharField(max_length=100)
+    specialty = models.CharField(max_length=150, blank=True, help_text="e.g. Traditional & Neo-traditional")
+    bio = models.TextField()
+    photo = models.ImageField(upload_to='artists/', blank=True, null=True)
+    instagram_handle = models.CharField(max_length=50, blank=True, help_text="Without the @ symbol")
+    order = models.PositiveIntegerField(default=0, help_text="Lower numbers appear first")
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['order', 'name']
+

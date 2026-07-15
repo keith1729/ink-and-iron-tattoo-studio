@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.conf import settings
 from .forms import BookingRequestForm
-from .models import TattooImage
+from .models import TattooImage, Artist
 
 def home(request):
     return render(request, 'core/home.html')
@@ -59,3 +59,7 @@ def booking_success(request):
 def tattoo_gallery(request):
     images = TattooImage.objects.all()
     return render(request, 'core/tattoo_gallery.html', {'images': images})
+
+def artist_list(request):
+    artists = Artist.objects.all()
+    return render(request, 'core/artists.html', {'artists': artists})

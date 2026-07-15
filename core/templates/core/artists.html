@@ -1,0 +1,32 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Our Artists | Ink & Iron{% endblock %}
+
+{% block content %}
+<section class="page-heading">
+    <h1>Meet the Artists</h1>
+    <p class="tagline">The hands behind the ink</p>
+</section>
+
+{% if artists %}
+<div class="artist-grid">
+    {% for artist in artists %}
+    <div class="artist-card">
+        {% if artist.photo %}
+        <img src="{{ artist.photo.url }}" alt="{{ artist.name }}" class="artist-photo">
+        {% endif %}
+        <h3>{{ artist.name }}</h3>
+        {% if artist.specialty %}<span class="artist-specialty">{{ artist.specialty }}</span>{% endif %}
+        <p class="artist-bio">{{ artist.bio }}</p>
+        {% if artist.instagram_handle %}
+        <a href="https://instagram.com/{{ artist.instagram_handle }}" class="artist-instagram" target="_blank" rel="noopener">@{{ artist.instagram_handle }}</a>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="gallery-empty">
+    <p>Artist profiles coming soon.</p>
+</div>
+{% endif %}
+{% endblock %}
