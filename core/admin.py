@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import BookingRequest, TattooImage, Artist
+from .models import BookingRequest, TattooImage, Artist, PiercingImage
 
 @admin.register(BookingRequest)
 class BookingRequestAdmin(admin.ModelAdmin):
@@ -10,6 +10,20 @@ class BookingRequestAdmin(admin.ModelAdmin):
 
 @admin.register(TattooImage)
 class TattooImageAdmin(admin.ModelAdmin):
+    list_display = ('thumbnail', 'title', 'uploaded_at')
+    list_display_links = ('title',)
+
+    def thumbnail(self, obj):
+        if obj.image:
+            return format_html(
+                '<img src="{}" style="height: 60px; width: 60px; object-fit: cover; border-radius: 4px;" />',
+                obj.image.url,
+            )
+        return "No image"
+    thumbnail.short_description = 'Preview'
+
+@admin.register(PiercingImage)
+class PiercingImageAdmin(admin.ModelAdmin):
     list_display = ('thumbnail', 'title', 'uploaded_at')
     list_display_links = ('title',)
 
@@ -36,3 +50,5 @@ class ArtistAdmin(admin.ModelAdmin):
             )
         return "No photo"
     thumbnail.short_description = 'Photo'
+
+    
