@@ -5,7 +5,7 @@ from django.utils import timezone
 from django.core.mail import send_mail
 from django.conf import settings
 from .forms import BookingRequestForm
-from .models import TattooImage, Artist, PiercingImage
+from .models import TattooImage, Artist, PiercingImage, Consultation
 
 def home(request):
     return render(request, 'core/home.html')
@@ -101,9 +101,63 @@ def consultation(request):
         form = ConsultationForm(request.POST)
         form.fields['preferred_artist'].choices = artist_choices
         if form.is_valid():
-            # TODO: save to DB, send email, or create booking request
+            data = form.cleaned_data
+
+            preferred_artist = None
+            if data['preferred_artist']:
+                preferred_artist = Artist.objects.filter(id=data['preferred_artist']).first()
+
+            consultation_obj = Consultation.objects.create(
+                name=data['name'],
+                email=data['email'],
+                phone=data['phone'],
+                preferred_artist=preferred_artist,
+                preferred_date=data['preferred_date'],
+                notes=data['notes'],
+            )
+
+            artist_name = preferred_artist.name if preferred_artist else 'Any artist'
+
+            # Studio Notification Email
+            studio_message = (
+                f'New Consultation Request from {consultation_obj.name}\n\n'
+                f'Name: {consultation_obj.name}\n'
+                f'Email: {consultation_obj.email}\n'
+                f'Phone: {consultation_obj.phone}\n'
+                f'Preferred artist: {artist_name}\n'
+                f'Preferred date: {consultation_obj.preferred_date or "Not specified"}\n'
+                f'Notes: {consultation_obj.notes}\n'
+            )
+            send_mail(
+                subject=f'New Consultation Request from {consultation_obj.name}',
+                message=studio_message,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[settings.STUDIO_NOTIFICATION_EMAIL],
+                fail_silently=False,
+            )
+
+            # Customer Confirmation Email
+            customer_message = (
+                f"Hi {consultation_obj.name},\n\n"
+                f"Thank you for requesting a consultation at Ink & Iron Studio!\n\n"
+                f"We have received the following details:\n\n"
+                f"Preferred artist: {artist_name}\n"
+                f"Preferred date: {consultation_obj.preferred_date or 'Not specified'}\n"
+                f"Notes: {consultation_obj.notes}\n\n"
+                f"We will review your request and contact you shortly to confirm.\n\n"
+                f"Best regards,\n"
+                f"Ink & Iron Tattoo & Piercing Studio\n"
+            )
+            send_mail(
+                subject="Thank you for your consultation request - Ink & Iron Studio",
+                message=customer_message,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[consultation_obj.email],
+                fail_silently=False,
+            )
+
             messages.success(request, "Thanks — your consultation request has been received. We'll be in touch.")
-            return redirect('consultation')  # or redirect to a thank-you page
+            return redirect('consultation')
         else:
             messages.error(request, "Please fix the errors below.")
     else:

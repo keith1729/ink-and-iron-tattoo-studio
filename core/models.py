@@ -70,5 +70,24 @@ class PiercingImage(models.Model):
         ordering = ['-uploaded_at']
 
 
+class Consultation(models.Model):
+    STATUS_CHOICES = [
+        ('pending', 'Pending'),
+        ('contacted', 'Contacted'),
+        ('booked', 'Booked'),
+    ]
 
+    name = models.CharField(max_length=120)
+    email = models.EmailField()
+    phone = models.CharField(max_length=30, blank=True)
+    preferred_artist = models.ForeignKey(Artist, on_delete=models.SET_NULL, null=True, blank=True)
+    preferred_date = models.DateField(null=True, blank=True)
+    notes = models.TextField(blank=True)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
+    created_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return f"{self.name} - {self.preferred_date or 'No date set'}"
+
+    class Meta:
+        ordering = ['-created_at']

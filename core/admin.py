@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import BookingRequest, TattooImage, Artist, PiercingImage
+from .models import BookingRequest, TattooImage, Artist, PiercingImage, Consultation
 
 @admin.register(BookingRequest)
 class BookingRequestAdmin(admin.ModelAdmin):
@@ -51,4 +51,10 @@ class ArtistAdmin(admin.ModelAdmin):
         return "No photo"
     thumbnail.short_description = 'Photo'
 
-    
+
+@admin.register(Consultation)
+class ConsultationAdmin(admin.ModelAdmin):
+    list_display = ('name', 'preferred_artist', 'preferred_date', 'status', 'created_at')
+    list_filter = ('status', 'preferred_artist', 'preferred_date')
+    search_fields = ('name', 'email', 'phone')
+    list_editable = ('status',)
