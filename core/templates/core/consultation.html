@@ -1,0 +1,105 @@
+{% extends 'core/base.html' %}
+
+{% block title %}{{ title|default:"Consultations - Ink & Iron" }}{% endblock %}
+
+{% block content %}
+<section class="consultation page-section">
+  <div class="container">
+    <h1>{{ title|default:"Consultations" }}</h1>
+    <p class="lead">{{ meta_description|default:"Book a free consultation with our tattoo and piercing artists." }}</p>
+
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li class="message {{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <div class="consultation-grid">
+      <div class="consultation-form">
+        <h2>Request a consultation</h2>
+        <form method="post" novalidate>
+          {% csrf_token %}
+          {{ form.non_field_errors }}
+          <div class="form-row">
+            <label for="{{ form.name.id_for_label }}">Name</label>
+            {{ form.name }}
+            {{ form.name.errors }}
+          </div>
+
+          <div class="form-row">
+            <label for="{{ form.email.id_for_label }}">Email</label>
+            {{ form.email }}
+            {{ form.email.errors }}
+          </div>
+
+          <div class="form-row">
+            <label for="{{ form.phone.id_for_label }}">Phone (optional)</label>
+            {{ form.phone }}
+            {{ form.phone.errors }}
+          </div>
+
+          <div class="form-row">
+            <label for="{{ form.preferred_artist.id_for_label }}">Preferred artist</label>
+            {{ form.preferred_artist }}
+            {{ form.preferred_artist.errors }}
+          </div>
+
+          <div class="form-row">
+            <label for="{{ form.preferred_date.id_for_label }}">Preferred date</label>
+            {{ form.preferred_date }}
+            {{ form.preferred_date.errors }}
+          </div>
+
+          <div class="form-row">
+            <label for="{{ form.notes.id_for_label }}">Notes</label>
+            {{ form.notes }}
+            {{ form.notes.errors }}
+          </div>
+
+          <button type="submit" class="btn-stamp">Request Consultation</button>
+        </form>
+      </div>
+
+      <aside class="consultation-info">
+        <h3>Available services</h3>
+        <ul>
+          {% for s in services %}
+            <li><strong>{{ s.label }}</strong> — {{ s.summary }}</li>
+          {% empty %}
+            <li>Tattoo and piercing consultations available.</li>
+          {% endfor %}
+        </ul>
+
+        <h3>Artists</h3>
+        <ul>
+          {% for a in artists %}
+            <li>{{ a.name }}{% if a.specialty %} — {{ a.specialty }}{% endif %}</li>
+          {% empty %}
+            <li>Our artists will be listed here soon.</li>
+          {% endfor %}
+        </ul>
+
+        <h3>Timeslots</h3>
+        {% for day in timeslots %}
+          <div class="slot-day">
+            <strong>{{ day.date }}</strong>
+            <ul>
+              {% for t in day.times %}
+                <li>{{ t }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% empty %}
+          <p>No timeslots available right now.</p>
+        {% endfor %}
+
+        <h3>Location & hours</h3>
+        <p>{{ location.address }}<br>{{ location.hours }}</p>
+      </aside>
+    </div>
+  </div>
+</section>
+{% endblock %}
+

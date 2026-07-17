@@ -4,30 +4,37 @@
 
 {% block content %}
 <section class="hero">
-    <h1>Ink & Iron</h1>
-    <p class="tagline">Killarney's home for traditional tattoo work</p>
-    <a href="{% url 'booking_request' %}" class="btn-stamp">Book Your Session</a>
+  <h1>Ink & Iron</h1>
+  <p class="tagline">Killarney's home for traditional tattoo work</p>
+  <a href="{% url 'booking_request' %}" class="btn-stamp">Book Your Session</a>
 </section>
 
-<section class="flash-grid">
-    <a href="{% url 'tattoo_gallery' %}" class="flash-card-link">
-        <div class="flash-card">
-            <span class="flash-number">No. 01</span>
-            <h3>Tattoos</h3>
-            <p>Custom pieces and flash designs, from small linework to full sleeves.</p>
-        </div>
-    </a>
-    <a href="{% url 'piercing_gallery' %}" class="flash-card-link">
-        <div class="flash-card">
-            <span class="flash-number">No. 02</span>
-            <h3>Piercings</h3>
-            <p>Ear, facial, and body piercing with sterile, single use equipment.</p>
-        </div>
-    </a>
-    <div class="flash-card">
-        <span class="flash-number">No. 03</span>
-        <h3>Consultations</h3>
-        <p>Not sure what you want yet? Book a chat with an artist first, no pressure.</p>
+<section class="flash-grid" aria-label="Home features">
+  <a href="{% url 'tattoo_gallery' %}" class="flash-card-link">
+    <div class="flash-card" tabindex="0">
+      <span class="flash-number">No. 01</span>
+      <h3>Tattoos</h3>
+      <p>Custom pieces and flash designs, from small linework to full sleeves.</p>
+      <div class="detail">View gallery and artist portfolios</div>
     </div>
+  </a>
+
+  <a href="{% url 'piercing_gallery' %}" class="flash-card-link">
+    <div class="flash-card" tabindex="0">
+      <span class="flash-number">No. 02</span>
+      <h3>Piercings</h3>
+      <p>Ear, facial, and body piercing with sterile, single use equipment.</p>
+      <div class="detail">Aftercare info and booking</div>
+    </div>
+  </a>
+
+  <a href="{% url 'consultation' %}" class="flash-card-link">
+    <div class="flash-card" tabindex="0">
+      <span class="flash-number">No. 03</span>
+      <h3>Consultations</h3>
+      <p>Not sure what you want yet? Book a chat with an artist first, no pressure.</p>
+      <div class="detail">Book a free consultation with an artist</div>
+    </div>
+  </a>
 </section>
 {% endblock %}

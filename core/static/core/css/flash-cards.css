@@ -1,0 +1,107 @@
+/* flash-cards.css */
+
+.flash-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  align-items: stretch;
+  perspective: 1000px;
+  margin: 2rem 0;
+}
+
+.flash-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.flash-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.25rem;
+  transform-origin: center;
+  transition: transform 260ms cubic-bezier(.2,.9,.2,1), filter 260ms;
+  will-change: transform;
+  position: relative;
+  z-index: 0;
+  overflow: visible;
+  min-height: 12rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  cursor: pointer;
+  border: 1px solid rgba(0,0,0,0.04);
+  isolation: isolate;
+}
+
+/* Use a pseudo-element for the shadow for smoother animation */
+.flash-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  opacity: 1;
+  transition: opacity 260ms ease, transform 260ms ease;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.flash-card:hover,
+.flash-card:focus-within {
+  transform: translateY(-10px) scale(1.04);
+  filter: saturate(1.03);
+  z-index: 5;
+}
+
+.flash-card:hover::after,
+.flash-card:focus-within::after {
+  box-shadow: 0 22px 48px rgba(0,0,0,0.20);
+  opacity: 1;
+}
+
+/* Small number badge */
+.flash-number {
+  font-weight: 700;
+  color: #666;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+}
+
+/* Hidden detail reveal */
+.detail {
+  margin-top: auto;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 320ms ease, opacity 220ms ease 60ms;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+/* Reveal on hover/focus */
+.flash-card:hover .detail,
+.flash-card:focus-within .detail {
+  max-height: 6rem;
+  opacity: 1;
+}
+
+/* Make keyboard focus visible */
+.flash-card:focus-within {
+  outline: 3px solid rgba(34, 150, 243, 0.12);
+  outline-offset: 4px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 900px) {
+  .flash-grid { grid-template-columns: 1fr; }
+  .flash-card:hover,
+  .flash-card:focus-within { transform: translateY(-6px) scale(1.02); }
+  .flash-card::after { box-shadow: 0 12px 30px rgba(0,0,0,0.14); }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .flash-card,
+  .detail { transition: none !important; transform: none !important; }
+}

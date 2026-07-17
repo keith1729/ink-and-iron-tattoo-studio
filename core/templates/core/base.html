@@ -2,30 +2,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{% block title %}Ink & Iron Tattoo & Piercing{% endblock %}</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rye&family=Give+You+Glory&family=Oswald:wght@400;500;600&family=Libre+Franklin:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Ink & Iron Tattoo Studio{% endblock %}</title>
+
+    <!-- Main site stylesheet -->
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
 </head>
 <body>
+
     <header class="site-header">
-        <a href="{% url 'home' %}" class="shop-name">Ink &amp; Iron</a>
-        <nav>
-            <a href="{% url 'home' %}">Home</a>
-            <a href="{% url 'artist_list' %}">Artists</a>
-            <a href="{% url 'booking_request' %}" class="btn-stamp">Book Now</a>
+        <nav class="nav">
+            <a href="{% url 'home' %}" class="shop-name">Ink & Iron</a>
+            <ul class="nav-links">
+                <li><a href="{% url 'tattoo_gallery' %}">Tattoos</a></li>
+                <li><a href="{% url 'piercing_gallery' %}">Piercings</a></li>
+                <li><a href="{% url 'consultation' %}">Consultations</a></li>
+                <li><a href="{% url 'booking_request' %}">Book</a></li>
+            </ul>
         </nav>
     </header>
 
-    <main>
-        {% block content %}{% endblock %}
+    <main class="site-main">
+        {% block content %}
+        {% endblock %}
     </main>
 
     <footer class="site-footer">
-        <p>&copy; {% now "Y" %} Ink &amp; Iron Tattoo &amp; Piercing, Killarney</p>
+        <p>&copy; {{ now|date:"Y" }} Ink & Iron Tattoo Studio — Killarney, Co. Kerry</p>
     </footer>
+
+    <!-- Optional JS (only if you create it) -->
+    {# <script src="{% static 'core/js/flash-cards.js' %}"></script> #}
+
 </body>
 </html>
