@@ -17,7 +17,7 @@ SECRET_KEY = 'django-insecure-%ufde+@mx5rqxs!-b)il4em8jx9iwtz9q-s$_!5$50(4iyy&6=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ink-and-iron-tattoo-studio.onrender.com']
 
 # Application definition
 INSTALLED_APPS = [
