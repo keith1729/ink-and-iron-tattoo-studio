@@ -61,15 +61,15 @@ def booking_success(request):
 
 def tattoo_gallery(request):
     images = TattooImage.objects.all()
-    return render(request, 'core/tattoo_gallery.html', {'images': images})
+    return render(request, 'tattoo_gallery.html', {'images': images})
 
 def artist_list(request):
     artists = Artist.objects.all()
-    return render(request, 'core/artists.html', {'artists': artists})
+    return render(request, 'artists.html', {'artists': artists})
 
 def piercing_gallery(request):
     images = PiercingImage.objects.all()
-    return render(request, 'core/piercing_gallery.html', {'images': images})
+    return render(request, 'piercing_gallery.html', {'images': images})
 
 
 class ConsultationForm(forms.Form):
@@ -185,4 +185,4 @@ def consultation(request):
         },
         'pricing_note': 'Consultations are free; deposits may be required for bookings.',
     }
-    return render(request, 'core/consultation.html', context)
+    return render(request, 'consultation.html', context)
