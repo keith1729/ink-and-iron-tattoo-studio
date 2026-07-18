@@ -7,6 +7,11 @@
 
     <title>{% block title %}Ink & Iron Tattoo Studio{% endblock %}</title>
 
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&family=Permanent+Marker&family=Pirata+One&display=swap" rel="stylesheet">
+
     <!-- Main site stylesheet -->
     <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
 </head>
@@ -16,11 +21,11 @@
         <nav class="nav">
             <a href="{% url 'home' %}" class="shop-name">Ink & Iron</a>
             <ul class="nav-links">
-              <li><a href="{% url 'tattoo_gallery' %}">Tattoos</a></li>
-              <li><a href="{% url 'piercing_gallery' %}">Piercings</a></li>
-              <li><a href="{% url 'artist_list' %}">Artists</a></li>
-              <li><a href="{% url 'consultation' %}">Consultations</a></li>
-              <li><a href="{% url 'booking_request' %}">Book</a></li>
+                <li><a href="{% url 'tattoo_gallery' %}">Tattoos</a></li>
+                <li><a href="{% url 'piercing_gallery' %}">Piercings</a></li>
+                <li><a href="{% url 'artist_list' %}">Artists</a></li>
+                <li><a href="{% url 'consultation' %}">Consultations</a></li>
+                <li><a href="{% url 'booking_request' %}">Book</a></li>
             </ul>
         </nav>
     </header>
